@@ -6,8 +6,10 @@ android {
 
     defaultConfig {
         applicationId "io.github.sodacity.android101"
+
         minSdkVersion 17
         targetSdkVersion 23
+
         versionCode 1
         versionName "1.0"
     }
@@ -22,6 +24,16 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
+
+    /*
+     * Here we define our dependencies that we want to utilize in our project such as the support and
+     * compatibility libraries, network libraries, image loading libraries, and so on.
+     */
+
     compile 'com.android.support:appcompat-v7:23.1.0'
     compile 'com.android.support:design:23.1.0'
+
+    compile 'com.android.support:recyclerview-v7:23.1.0'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+
 }

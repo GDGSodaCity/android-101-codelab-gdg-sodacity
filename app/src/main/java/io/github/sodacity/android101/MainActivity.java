@@ -2,14 +2,23 @@ package io.github.sodacity.android101;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import io.github.sodacity.android101.model.Placeholder;
+
 public class MainActivity extends AppCompatActivity {
+
+    private RecyclerView recyclerView;
+    private PlaceholderRecyclerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,10 +31,30 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Placeholder placeholder = new Placeholder();
+                adapter.add(placeholder);
+                adapter.notifyItemInserted(adapter.getItemCount()-1);
+                recyclerView.smoothScrollToPosition(adapter.getItemCount()-1);
             }
         });
+
+        // Create the recycler adapter
+        adapter = new PlaceholderRecyclerAdapter(this);
+
+        // Load the recyclerview from the layout and setup
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
+
+        // Generate placeholder items
+        List<Placeholder> placeholders = new ArrayList<>();
+        for (int i = 0; i < 20; i++) {
+            placeholders.add(new Placeholder());
+        }
+
+        adapter.addAll(placeholders);
+        adapter.notifyDataSetChanged();
+
     }
 
     @Override
@@ -44,6 +73,10 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            return true;
+        }else if(id == R.id.action_clearall){
+            adapter.clear();
+            adapter.notifyDataSetChanged();
             return true;
         }
 

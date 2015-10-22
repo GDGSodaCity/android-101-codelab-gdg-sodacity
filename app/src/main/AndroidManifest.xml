@@ -3,6 +3,20 @@
           xmlns:android="http://schemas.android.com/apk/res/android"
     >
 
+    <!--
+
+        This is where you would define the permissions your application needs, such as Internet,
+        Location access, access to the external file storage system, bluetooth, and so on...
+
+    -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!--
+
+        The application definition. Here we specify the Application name('label') that the user sees,
+        the application 'icon' displayed in the launcher, and the base theme.
+
+    -->
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,17 +24,34 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         >
+
+        <!--
+
+            Each activity you create needs to be defined here under the Application definition
+            where you specify the path to the activity relative to the package. You can also specify
+            it's default label and override the base application theme.
+
+        -->
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar"
             >
+
+            <!--
+
+                Activities can contain Intent Filters, i.e.; a hook for androids communication layer
+                that can catch certain messages and display the activity in accordance. For example,
+                the following intent filter tells the OS that this activity is the main one and to
+                launch it when the user selects the application from the home screen or launcher.
+
+            -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>
