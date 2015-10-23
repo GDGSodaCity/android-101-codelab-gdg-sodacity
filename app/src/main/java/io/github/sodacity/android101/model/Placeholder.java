@@ -15,7 +15,7 @@ public class Placeholder {
 
     public static String generateRandomPlaceholder(){
         Random r = new Random(System.nanoTime());
-        String base = PLACEHOLDER_SITES[r.nextInt(3)];
+        String base = PLACEHOLDER_SITES[r.nextInt(PLACEHOLDER_SITES.length)];
         int width = r.nextInt(100) + 300;
         int height = r.nextInt(100) + 300;
         return String.format(base, width, height);

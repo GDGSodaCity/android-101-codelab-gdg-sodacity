@@ -38,11 +38,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // Load the recycler view from the layout
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+
         // Create the recycler adapter
         adapter = new PlaceholderRecyclerAdapter(this);
 
-        // Load the recyclerview from the layout and setup
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        // Setup the recycler view with the adapter
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
 
