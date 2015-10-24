@@ -527,3 +527,11 @@ adapter.notifyDataSetChanged();
 Now you should be able to run the project and see a grid of random images that load from the network.!!! WHOOOO!! [Pat self on the back]
 
 #### BONUS ROUND!!!
+
+Here are some extra things todo if time permits:
+
+*	Add a new placeholder model object to the adapter when the user presses the FloatingActionButton.
+*	Add an option menu to the `res/menu/main_menu.xml` file that clears out the adapter.
+*	Add a click listener to each cell that shows a snackbar when the user clicks it.
+* 	Change the theme colors in `res/values/styles.xml` (i.e.; colorPrimary, colorPrimaryDark, and colorAccent)
+* 	Add some material design icons for the menu item and floating action button with the [Material Design Icon Generator](https://github.com/konifar/android-material-design-icon-generator-plugin)
